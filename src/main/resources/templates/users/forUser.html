@@ -1,19 +1,56 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>For user</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<p th:text="'Ваш ID: ' + ${user.get().id}">value</p>-->
+<!--<p th:text="'Ваше имя: ' + ${user.get().userName}">value</p>-->
+<!--<p th:text="'Ваша фамилия: ' + ${user.get().surName}">value</p>-->
+<!--<p th:text="'Ваш возраст: ' + ${user.get().age}">value</p>-->
+<!--<p th:text="'Ваша почта: ' + ${user.get().email}">value</p>-->
+<!--<p th:text="'Ваша роль: ' + ${user.get().roleToString()}">value</p>-->
+<!--<br>-->
+<!--<a href="/logout"><input type="button" value="Выйти"></a>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>For user</title>
+    <!-- Используем Bootstrap 5.0.0 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-<p th:text="'Ваш ID: ' + ${user.get().id}">value</p>
-<p th:text="'Ваше имя: ' + ${user.get().userName}">value</p>
-<p th:text="'Ваша фамилия: ' + ${user.get().surName}">value</p>
-<p th:text="'Ваш возраст: ' + ${user.get().age}">value</p>
-<p th:text="'Ваша почта: ' + ${user.get().email}">value</p>
-<p th:text="'Ваша роль: ' + ${user.get().roleToString()}">value</p>
-<br>
-<a href="/logout"><input type="button" value="Выйти"></a>
-
+<div class="container">
+    <h2>User Details</h2>
+    <div class="row mb-3">
+        <div class="col">
+            <p>ID: ${user.id}</p>
+        </div>
+        <div class="col">
+            <p>Name: ${user.userName}</p>
+        </div>
+        <div class="col">
+            <p>Last Name: ${user.surName}</p>
+        </div>
+        <div class="col">
+            <p>Age: ${user.age}</p>
+        </div>
+        <div class="col">
+            <p>Email: ${user.email}</p>
+        </div>
+        <div class="col">
+            <p>Role: ${user.roleToString()}</p>
+        </div>
+    </div>
+    <a href="/logout" class="btn btn-secondary">Logout</a>
+</div>
 </body>
 </html>
+
