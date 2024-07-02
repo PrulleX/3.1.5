@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
             updatedUser.setAge(user.getAge());
             updatedUser.setRoles(user.getRoles());
 
+
             if (!updatedUser.getPassword().equals(user.getPassword())) {
                 updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
             }

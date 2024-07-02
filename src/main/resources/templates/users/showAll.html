@@ -192,7 +192,7 @@
                 </div>
             </div>
 
-            <div th:each="user : ${users}" th:object="${user}">
+            <div th:each="user : ${users}">
                 <div class="modal fade" th:id="'editModal' + ${user.id}" tabindex="-1" role="dialog">
                     <div class="modal-dialog modal-sm-custom" role="document">
                         <div class="modal-content">
@@ -200,35 +200,34 @@
                                 <h5 class="modal-title">Edit user</h5>
                             </div>
                             <div class="modal-body">
-                                <form th:method="post" th:action="@{/admin/{id}(id=${user.id})}" style="margin-bottom: 0;">
-                                    <input type="hidden" th:value="${user.id}" name="id"/>
+                                <form th:method="post" th:action="@{/admin/{id}(id=${user.id})}" th:object="${user}" style="margin-bottom: 0;">
                                     <div class="form-group">
-                                        <label for="idEdit">ID</label>
-                                        <input type="text" id="idEdit" class="form-control" th:value="${user.id}" name="id" required readonly/>
+                                        <label th:for="'idEdit' + ${user.id}">ID</label>
+                                        <input type="text" th:id="'idEdit' + ${user.id}" class="form-control" th:value="${user.id}" name="id" required readonly/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="firstName">First Name</label>
-                                        <input type="text" id="firstName" class="form-control" th:value="${user.userName}" name="firstName" required/>
+                                        <label th:for="'firstName' + ${user.id}">First Name</label>
+                                        <input type="text" th:id="'firstName' + ${user.id}" class="form-control" th:value="${user.userName}" name="userName" required/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="lastName">Last Name</label>
-                                        <input type="text" id="lastName" class="form-control" th:value="${user.surName}" name="lastName" required/>
+                                        <label th:for="'lastName' + ${user.id}">Last Name</label>
+                                        <input type="text" th:id="'lastName' + ${user.id}" class="form-control" th:value="${user.surName}" name="surName" required/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="age">Age</label>
-                                        <input type="number" id="ageEdit" class="form-control" th:value="${user.age}" name="age" required/>
+                                        <label th:for="'ageEdit' + ${user.id}">Age</label>
+                                        <input type="number" th:id="'ageEdit' + ${user.id}" class="form-control" th:value="${user.age}" name="age" required/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="emailEdit" class="form-control" th:value="${user.email}" name="email" required/>
+                                        <label th:for="'emailEdit' + ${user.id}">Email</label>
+                                        <input type="email" th:id="'emailEdit' + ${user.id}" class="form-control" th:value="${user.email}" name="email" required/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" id="passwordEdit" class="form-control" th:value="${user.password}" name="password" required minlength="3"/>
+                                        <label th:for="'passwordEdit' + ${user.id}">Password</label>
+                                        <input type="password" th:id="'passwordEdit' + ${user.id}" class="form-control" th:value="${user.password}" name="password" required minlength="3"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="rolesEdit">Role</label>
-                                        <select multiple id="rolesEdit" class="form-control" name="roles" required>
+                                        <label th:for="'rolesEdit' + ${user.id}">Role</label>
+                                        <select multiple th:id="'rolesEdit' + ${user.id}" class="form-control" name="roles" required>
                                             <option th:each="role : ${allRoles}" th:value="${role.id}" th:selected="${user.roles.contains(role)}" th:text="${role.role}"></option>
                                         </select>
                                     </div>
@@ -242,7 +241,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Delete User Modal -->
             <div th:each="user : ${users}">
