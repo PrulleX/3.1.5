@@ -11,6 +11,7 @@ import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -57,6 +58,7 @@ public class UserServiceImpl implements UserService {
             if (!updatedUser.getPassword().equals(user.getPassword())) {
                 updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
             }
+            userRepository.save(updatedUser);
         }
     }
 
