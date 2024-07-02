@@ -45,6 +45,24 @@ public class AdminController {
         return "users/show";
     }
 
+    @GetMapping("/new")
+    public String newUser(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("roles", roleService.findAll());
+        return "users/new";
+    }
+
+    @PostMapping
+    public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
+        userValidator.validate(user, bindingResult);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return newUser(model);
+        }
+        userService.saveUser(user);
+        return "redirect:/admin";
+    }
+
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.showUserId(id));
