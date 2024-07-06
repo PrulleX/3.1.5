@@ -3,7 +3,7 @@ editUser();
 
 async function editModal(id) {
     const modalEdit = new bootstrap.Modal(document.querySelector('#editModal'));
-    await open_modal(formEdit, modalEdit, id);
+    await open_fill_modal(formEdit, modalEdit, id);
 }
 
 function editUser() {
@@ -26,7 +26,7 @@ function editUser() {
             userName: formEdit.userName.value,
             surName: formEdit.surName.value,
             email: formEdit.email.value,
-            password: formDelete.password.value,
+            password: formEdit.password.value,
             age: formEdit.age.value,
             roles: rolesForEdit
         };
@@ -35,7 +35,7 @@ function editUser() {
             requestBody.password = password;
         }
 
-        fetch("/api/admin/users/" + formEdit.id.value, {
+        fetch("/api/admin/" + formEdit.id.value, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

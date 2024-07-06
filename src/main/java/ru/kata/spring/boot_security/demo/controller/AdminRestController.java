@@ -10,8 +10,8 @@ import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
-import java.security.Principal;
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/admin")
 public class AdminRestController {
@@ -37,29 +37,29 @@ public class AdminRestController {
 
     @GetMapping("/roles")
     public ResponseEntity<List<Role>> allRoles() {
-        return  new ResponseEntity<>(roleService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(roleService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser (@PathVariable("id") Long id) {
+    public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
 
         return new ResponseEntity<>(userService.showUserId(id), HttpStatus.OK);
     }
 
     @PostMapping("/new")
-    public ResponseEntity<HttpStatus> save (@RequestBody User user) {
+    public ResponseEntity<HttpStatus> save(@RequestBody User user) {
         userService.saveUser(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<HttpStatus> update (@RequestBody User user) {
+    public ResponseEntity<HttpStatus> update(@RequestBody User user) {
         userService.updateUser(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> delete (@PathVariable("id") Long id) {
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }

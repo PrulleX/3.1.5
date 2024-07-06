@@ -1,3 +1,4 @@
+
 const URLOfUsersTable = 'http://localhost:8080/api/admin/users/';
 
 getAllUsers();
@@ -5,7 +6,7 @@ getAllUsers();
 function getAllUsers() {
     fetch(URLOfUsersTable)
         .then(function (response) {
-            return response.json()
+            return response.json();
         })
         .then(function (users) {
             let dataOfUsers = '';
@@ -23,30 +24,27 @@ function getAllUsers() {
                 <td>${user.email}</td>
                 <td>${user.age}</td>
                 <td>${rolesString}</td>
-                
-                    <td>
-                        <button type = "button"
-                        class="btn btn-info"
-                        style="background-color: #0b9595; color: #fff"
-                        data-bs-toggle="modal"
-                        data-target="#editModal"
-                        onclick="editModal(${user.id})">
-                            Edit
-                            </button>
-                            </td>
-                        
-                        
-                        <td>
-                        <button type="button" 
-                        class="btn btn-danger" 
-                        data-bs-toggle="modal" 
-                        data-target="#deleteModal" 
-                        onclick="deleteModal(${user.id})">
-                               Delete
-                               </button>
-                               </td>
-                               </tr>`;
+                <td>
+                    <button type="button"
+                            class="btn btn-info"
+                            style="background-color: #0b9595; color: #fff"
+                            data-bs-toggle="modal"
+                            data-target="#editModal"
+                            onclick="editModal(${user.id})">
+                        Edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button"
+                            class="btn btn-danger"
+                            data-bs-toggle="modal"
+                            data-target="#deleteModal"
+                            onclick="deleteModal(${user.id})">
+                        Delete
+                    </button>
+                </td>
+                </tr>`;
             }
-            tableUsers.innerHTML = dataOfUsers;
-        })
+            tableOfUsers.innerHTML = dataOfUsers;
+        });
 }

@@ -15,7 +15,7 @@ let newUserForm = document.getElementById("formNewUser");
 newUserForm.addEventListener("submit", async event => {
     event.preventDefault();
 
-    let rolesForNewUser = Array.from(formNewUser.roles.selectedOptions)
+    let rolesForNewUser = Array.from(newUserForm.newRoles.selectedOptions)
         .map(option => {
             return {
                 id: parseInt(option.value),
@@ -24,18 +24,18 @@ newUserForm.addEventListener("submit", async event => {
         });
 
     try {
-        const response = await fetch("http://localhost:8080/api/admin/users/", {
+        const response = await fetch("http://localhost:8080/api/admin/new", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: formEdit.id.value,
-                userName: formEdit.userName.value,
-                surName: formEdit.surName.value,
-                email: formEdit.email.value,
-                password: formDelete.password.value,
-                age: formEdit.age.value,
+                userName: newUserForm.newUserName.value,
+                surName: newUserForm.newSurName.value,
+                email: newUserForm.newEmail.value,
+                password: newUserForm.newPassword.value,
+                age: newUserForm.newAge.value,
+                roles: rolesForNewUser
             })
         });
 
@@ -44,8 +44,8 @@ newUserForm.addEventListener("submit", async event => {
         }
 
         newUserForm.reset();
-        getAllUsers();
-        $('#usersTable').click();
+        getAllUsers(); // Обновите список пользователей после создания нового пользователя
+        document.querySelector('#users-table-tab').click(); // Переключитесь обратно на вкладку с таблицей пользователей
     } catch (error) {
         console.error('Error creating new user:', error);
     }
