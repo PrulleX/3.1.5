@@ -43,7 +43,8 @@ function editUser() {
             body: JSON.stringify(requestBody)
         })
             .then(() => {
-                $('#editClose').click();
+                const modalEdit = bootstrap.Modal.getInstance(document.querySelector('#editModal'));
+                modalEdit.hide();
                 getAllUsers();
             });
     });
