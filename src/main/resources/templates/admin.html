@@ -161,8 +161,7 @@
                                 </div>
 
                                 <!-- Edit User Modal -->
-                                <div class="modal" tabindex="-1" id="editModal"
-                                     aria-labelledby="EditModalLabel" aria-hidden="true">
+                                <div class="modal" tabindex="-1" id="editModal" aria-labelledby="EditModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                         <div class="modal-dialog modal-sm-custom" role="document">
                                             <div class="modal-content">
@@ -170,57 +169,37 @@
                                                     <h5 class="modal-title">Edit user</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form id="formUpdatedUser">
+                                                    <form id="formEdit" name="formEdit">
                                                         <div class="mb-3">
                                                             <label for="editId" class="form-label">ID</label>
-                                                            <input type="text" class="form-control" id="editId"
-                                                                   name="editId"
-                                                                   readonly
-                                                                   required>
+                                                            <input type="text" class="form-control" id="editId" name="id" readonly required>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="editUserName" class="form-label">First
-                                                                Name</label>
-                                                            <input type="text" class="form-control" id="editUserName"
-                                                                   name="editUserName"
-                                                                   required>
+                                                            <label for="editUserName" class="form-label">First Name</label>
+                                                            <input type="text" class="form-control" id="editUserName" name="userName" required>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="editSurName" class="form-label">Last
-                                                                Name</label>
-                                                            <input type="text" class="form-control" id="editSurName"
-                                                                   name="editSurName"
-                                                                   required>
+                                                            <label for="editSurName" class="form-label">Last Name</label>
+                                                            <input type="text" class="form-control" id="editSurName" name="surName" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="editAge" class="form-label">Age</label>
-                                                            <input type="number" class="form-control" id="editAge"
-                                                                   name="editAge"
-                                                                   required>
+                                                            <input type="number" class="form-control" id="editAge" name="age" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="editEmail" class="form-label">Email</label>
-                                                            <input type="email" class="form-control" id="editEmail"
-                                                                   name="editEmail"
-                                                                   required>
+                                                            <input type="email" class="form-control" id="editEmail" name="email" required>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="editPassword"
-                                                                   class="form-label">Password</label>
-                                                            <input type="password" class="form-control"
-                                                                   id="editPassword"
-                                                                   name="editPassword" required>
+                                                            <label for="editPassword" class="form-label">Password</label>
+                                                            <input type="password" class="form-control" id="editPassword" name="password">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="editRoles" class="form-label">Roles</label>
-                                                            <select size="2" class="form-control" id="editRoles"
-                                                                    name="editRoles"
-                                                                    required>
-                                                            </select>
+                                                            <select multiple size="2" class="form-control" id="editRoles" name="roles" required></select>
                                                         </div>
                                                         <div>
-                                                            <input class="btn btn-success" type="submit"
-                                                                   value="Edit user!"/>
+                                                            <input class="btn btn-success" type="submit" value="Edit user!"/>
                                                         </div>
                                                     </form>
                                                 </div>

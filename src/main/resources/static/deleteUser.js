@@ -1,4 +1,4 @@
-let formDelete = document.forms["formDelete"];
+let formDelete = document.forms["formDelete"]
 deleteUser();
 
 async function deleteModal(id) {
@@ -18,7 +18,7 @@ function deleteUser() {
             });
         }
 
-        fetch("http://localhost:8080/api/admin/" + formDelete.id.value, {
+        fetch("http://localhost:8080/api/admin/{id}" + formDelete.id.value, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,8 +34,7 @@ function deleteUser() {
             })
         })
             .then(() => {
-                const modalDelete = bootstrap.Modal.getInstance(document.querySelector('#deleteModal'));
-                modalDelete.hide();
+                $('#deleteClose').click();
                 getAllUsers();
             });
     });
